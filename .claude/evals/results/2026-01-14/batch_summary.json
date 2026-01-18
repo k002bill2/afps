@@ -1,0 +1,45 @@
+{
+  "evaluation_date": "2026-01-14",
+  "evaluation_type": "batch_all",
+  "k": 3,
+  "total_tasks": 3,
+  "total_runs": 9,
+  "tasks": [
+    {
+      "task_id": "task_ui_001",
+      "name": "StationCard 컴포넌트 생성",
+      "category": "ui_component",
+      "runs": [0.92, 0.88, 0.95],
+      "avg_score": 0.917,
+      "pass_at_1": 1.0,
+      "pass_at_3": 1.0,
+      "status": "PASS"
+    },
+    {
+      "task_id": "task_svc_001",
+      "name": "실시간 도착 정보 서비스 구현",
+      "category": "service",
+      "runs": [0.88, 0.85, 0.82],
+      "avg_score": 0.850,
+      "pass_at_1": 1.0,
+      "pass_at_3": 1.0,
+      "status": "PASS"
+    },
+    {
+      "task_id": "task_bug_001",
+      "name": "useRealtimeTrains 훅 메모리 누수 수정",
+      "category": "bug_fix",
+      "runs": [0.85, 0.80, 0.75],
+      "avg_score": 0.800,
+      "pass_at_1": 1.0,
+      "pass_at_3": 1.0,
+      "status": "PASS"
+    }
+  ],
+  "overall_metrics": {
+    "avg_pass_at_1": 1.0,
+    "avg_pass_at_3": 1.0,
+    "avg_score": 0.856,
+    "total_success_rate": 1.0
+  }
+}
