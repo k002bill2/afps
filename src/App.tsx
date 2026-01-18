@@ -16,7 +16,7 @@ const dashboards: DashboardInfo[] = [
     title: '시안1: 클래식 대시보드',
     description: '펀드 관리 및 투자 현황 모니터링',
     icon: '💰',
-    path: 'v3-fund-dashboard',
+    path: '/v3-fund-dashboard/',
     port: 5190,
     color: '#4ade80',
   },
@@ -25,7 +25,7 @@ const dashboards: DashboardInfo[] = [
     title: '시안3: 카드 그리드',
     description: '전문 자산 관리 및 포트폴리오 분석',
     icon: '🏦',
-    path: 'professional-asset-management-dashboard',
+    path: '/professional-asset-management-dashboard/',
     port: 5192,
     color: '#f472b6',
   },
@@ -34,16 +34,24 @@ const dashboards: DashboardInfo[] = [
     title: '시안2: 모니터링 센터',
     description: '시스템 모니터링 및 실시간 알림',
     icon: '📊',
-    path: 'proactive-monitoring-center',
+    path: '/proactive-monitoring-center/',
     port: 5191,
     color: '#60a5fa',
+  },
+  {
+    id: 'advisor',
+    title: '시안4: 프리미엄 콘솔',
+    description: '프리미엄 투자 콘솔 (라이트 테마)',
+    icon: '💎',
+    path: '/my-advisor/',
+    port: 5193,
+    color: '#a78bfa',
   }
-  
 ]
 
 const App: React.FC = () => {
   const handleLaunch = (dashboard: DashboardInfo) => {
-    window.open(`http://localhost:${dashboard.port}`, '_blank')
+    window.open(dashboard.path, '_blank')
   }
 
   return (

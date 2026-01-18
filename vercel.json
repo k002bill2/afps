@@ -1,0 +1,10 @@
+{
+  "buildCommand": "npm run build:all",
+  "outputDirectory": "dist",
+  "rewrites": [
+    { "source": "/v3-fund-dashboard/:path*", "destination": "/v3-fund-dashboard/:path*" },
+    { "source": "/proactive-monitoring-center/:path*", "destination": "/proactive-monitoring-center/:path*" },
+    { "source": "/professional-asset-management-dashboard/:path*", "destination": "/professional-asset-management-dashboard/:path*" },
+    { "source": "/my-advisor/:path*", "destination": "/my-advisor/:path*" }
+  ]
+}

@@ -5,6 +5,7 @@ import react from '@vitejs/plugin-react';
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, '.', '');
     return {
+      base: '/proactive-monitoring-center/',
       server: {
         port: 5191,
         host: '0.0.0.0',

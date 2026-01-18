@@ -5,6 +5,7 @@ import react from '@vitejs/plugin-react';
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, '.', '');
     return {
+      base: '/professional-asset-management-dashboard/',
       server: {
         port: 5192,
         host: '0.0.0.0',

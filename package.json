@@ -6,7 +6,13 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build:v3": "cd v3-fund-dashboard && npm install && npm run build",
+    "build:monitoring": "cd proactive-monitoring-center && npm install && npm run build",
+    "build:asset": "cd professional-asset-management-dashboard && npm install && npm run build",
+    "build:advisor": "cd my-advisor---premium-investment-console && npm install && npm run build",
+    "build:all": "npm run build && npm run build:v3 && npm run build:monitoring && npm run build:asset && npm run build:advisor && npm run copy:all",
+    "copy:all": "mkdir -p dist/v3-fund-dashboard dist/proactive-monitoring-center dist/professional-asset-management-dashboard dist/my-advisor && cp -r v3-fund-dashboard/dist/* dist/v3-fund-dashboard/ && cp -r proactive-monitoring-center/dist/* dist/proactive-monitoring-center/ && cp -r professional-asset-management-dashboard/dist/* dist/professional-asset-management-dashboard/ && cp -r my-advisor---premium-investment-console/dist/* dist/my-advisor/"
   },
   "dependencies": {
     "react": "^19.0.0",
