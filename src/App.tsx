@@ -37,15 +37,6 @@ const dashboards: DashboardInfo[] = [
     path: '/proactive-monitoring-center/',
     port: 5191,
     color: '#60a5fa',
-  },
-  {
-    id: 'advisor',
-    title: '시안4: 프리미엄 콘솔',
-    description: '프리미엄 투자 콘솔 (라이트 테마)',
-    icon: '💎',
-    path: '/my-advisor/',
-    port: 5193,
-    color: '#a78bfa',
   }
 ]
 
