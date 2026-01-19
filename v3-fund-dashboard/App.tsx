@@ -18,7 +18,7 @@ const App: React.FC = () => {
         {/* 로고 */}
         <div className="p-3 border-b border-slate-700">
           <div className="flex items-center justify-center">
-            <img src="/logo_white.svg" alt="농식품모태펀드" className="h-8" />
+            <img src="logo_white.svg" alt="농식품모태펀드" className="h-8" />
           </div>
         </div>
 

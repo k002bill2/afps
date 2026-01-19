@@ -42,7 +42,8 @@ const dashboards: DashboardInfo[] = [
 
 const App: React.FC = () => {
   const handleLaunch = (dashboard: DashboardInfo) => {
-    window.open(dashboard.path, '_blank')
+    const url = `http://localhost:${dashboard.port}${dashboard.path}`
+    window.open(url, '_blank')
   }
 
   return (

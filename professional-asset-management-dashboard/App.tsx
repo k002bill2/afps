@@ -197,7 +197,7 @@ export default function App() {
       <aside className={`${collapsed ? 'w-16' : 'w-56'} flex-shrink-0 bg-white border-r border-slate-200 flex flex-col transition-all duration-300 h-full`}>
         {/* Logo */}
         <div className="p-2 flex items-center justify-center border-b border-slate-200 shrink-0">
-          <img src="/logo.svg" alt="농식품모태펀드" className="h-8" />
+          <img src="logo.svg" alt="농식품모태펀드" className="h-8" />
         </div>
 
         {/* Quick Menu */}
