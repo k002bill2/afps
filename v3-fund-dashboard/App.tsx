@@ -33,7 +33,7 @@ const App: React.FC = () => {
         {/* 즐겨찾기 메뉴 */}
         <div className="px-2 py-1">
           <div className="flex items-center justify-between mb-1">
-            <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">등록/변경 신청</span>
+            <span className="text-[12px] font-bold text-slate-400 uppercase tracking-wider">투자자산관리</span>
             <span className="material-symbols-outlined text-slate-400 text-sm cursor-pointer hover:text-white">expand_more</span>
           </div>
           {FAVORITE_MENUS.map((item) => (
@@ -51,22 +51,13 @@ const App: React.FC = () => {
         </div>
 
         {/* 메인 네비게이션 */}
-        <nav className="flex-1 px-2 py-1 overflow-y-auto text-xs">
-          {['보고', '운용기관 정보', '항목사 공시', '출자예정관리', '조기경보시스템'].map((section, idx) => (
+        <nav className="flex-1 px-2 py-1 overflow-y-auto text-sm">
+          {['조기경보', '운용기관 보고', '회계', '농십품보고', '수탁보고', '관리자'].map((section, idx) => (
             <div key={section} className="mb-2">
               <div className="flex items-center justify-between mb-0.5">
-                <span className="text-[11px] font-bold text-slate-400 uppercase">{section}</span>
+                <span className="text-[12px] font-bold text-slate-400 uppercase">{section}</span>
                 <span className="material-symbols-outlined text-slate-400 text-sm">expand_more</span>
               </div>
-              {idx === 0 && (
-                <div className="space-y-0.5">
-                  {['운용기관 정보', '조합정보', '재무정보', '투자자산'].map((item) => (
-                    <a key={item} href="#" className="flex items-center gap-1 px-2 py-1.5 rounded text-slate-300 hover:bg-slate-700">
-                      {item}
-                    </a>
-                  ))}
-                </div>
-              )}
             </div>
           ))}
         </nav>

@@ -189,10 +189,12 @@ export const FUND_SUMMARY = {
 
 // 즐겨찾기 메뉴 (사용자별 커스터마이징 가능)
 export const FAVORITE_MENUS: NavItem[] = [
-  { label: '투자등록 신청', icon: 'add_business', isActive: true },
-  { label: '조합 등록/변경 신청', icon: 'edit_note' },
-  { label: '전문인력 확인/취소 신청', icon: 'person_check' },
-  { label: '전문인력 확인서 출력', icon: 'print' },
+  { label: '모태펀드관리', icon: 'add_business', isActive: true },
+  { label: '조합관리', icon: 'edit_note' },
+  { label: '사후보고관리', icon: 'person_check' },
+  { label: '자펀드관리', icon: 'print' },
+  { label: '투자기업정보', icon: 'business' },
+  { label: '운용사 모니터링', icon: 'monitoring' },
 ];
 
 // NICE평가정보 ('22)

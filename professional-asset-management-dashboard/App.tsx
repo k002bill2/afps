@@ -212,7 +212,7 @@ export default function App() {
         )}
 
         {/* Navigation */}
-        <nav className="flex-1 p-2 flex flex-col gap-0.5 overflow-y-auto min-h-0">
+        <nav className="flex-1 p-2 flex flex-col gap-0.5 overflow-y-auto min-h-0 text-[13px]">
           <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1 px-1">
             {collapsed ? '•' : '메뉴'}
           </p>
