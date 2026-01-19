@@ -4,7 +4,7 @@ import {
   Activity, FileText, Settings,
   Search, Bell, Menu,
   TrendingUp, TrendingDown, AlertTriangle, Briefcase,
-  PieChart, Wallet, Building2,
+  PieChart, Wallet, Building2, Download,
   Clock, Plus, BookOpen, Calculator, FileCheck, FolderOpen,
   ArrowUpDown
 } from 'lucide-react';
