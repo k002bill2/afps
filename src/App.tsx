@@ -41,8 +41,13 @@ const dashboards: DashboardInfo[] = [
 ]
 
 const App: React.FC = () => {
+  const isDev = import.meta.env.DEV
+
   const handleLaunch = (dashboard: DashboardInfo) => {
-    const url = `http://localhost:${dashboard.port}${dashboard.path}`
+    // 개발 환경: localhost + 포트, 프로덕션: 상대 경로 (Vercel 배포)
+    const url = isDev
+      ? `http://localhost:${dashboard.port}${dashboard.path}`
+      : dashboard.path
     window.open(url, '_blank')
   }
 
@@ -79,9 +84,11 @@ const App: React.FC = () => {
               <p style={styles.cardDescription}>{dashboard.description}</p>
               <div style={styles.cardFooter}>
                 <span style={styles.path}>📁 {dashboard.path}</span>
-                <span style={{ ...styles.port, backgroundColor: dashboard.color }}>
-                  :{dashboard.port}
-                </span>
+                {isDev && (
+                  <span style={{ ...styles.port, backgroundColor: dashboard.color }}>
+                    :{dashboard.port}
+                  </span>
+                )}
               </div>
               <button
                 style={{ ...styles.button, backgroundColor: dashboard.color }}
