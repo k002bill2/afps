@@ -25,14 +25,13 @@ export const METRICS: Metric[] = [
 
 // 사이드바 네비게이션 (권한별 메뉴)
 export const NAV_ITEMS: NavItem[] = [
-  { label: '통합 모니터링', icon: 'dashboard', isActive: true },
-  { label: '투자자산', icon: 'account_balance' },
+  { label: '투자자산관리', icon: 'account_balance', isActive: true },
   { label: '조기경보', icon: 'warning', badge: 4 },
-  { label: '자펀드보고', icon: 'assessment' },
+  { label: '운용사 보고', icon: 'assessment' },
+  { label: '회계', icon: 'calculate' },
+  { label: '농식품보고', icon: 'domain' },
   { label: '수탁보고', icon: 'receipt_long' },
-  { label: '부처보고', icon: 'domain' },
-  { label: '모태펀드회계', icon: 'calculate' },
-  { label: '가치평가', icon: 'trending_up' },
+  { label: '관리자', icon: 'settings' },
 ];
 
 // 퀵메뉴 바로가기

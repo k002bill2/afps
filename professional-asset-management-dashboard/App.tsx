@@ -1,10 +1,10 @@
 
 import React, { useState } from 'react';
 import {
-  Star, LayoutDashboard, Activity, FileText, Settings,
-  ChevronLeft, Search, Bell, User, Menu,
-  TrendingUp, TrendingDown, AlertTriangle, ShieldCheck, Briefcase,
-  PieChart, Wallet, Building2, MoreHorizontal, Download,
+  Activity, FileText, Settings,
+  Search, Bell, Menu,
+  TrendingUp, TrendingDown, AlertTriangle, Briefcase,
+  PieChart, Wallet, Building2,
   Clock, Plus, BookOpen, Calculator, FileCheck, FolderOpen,
   ArrowUpDown
 } from 'lucide-react';
@@ -49,14 +49,13 @@ interface EarlyWarningProps {
 
 // Data
 const NAV_ITEMS = [
-  { label: '통합 대시보드', icon: LayoutDashboard, active: true },
-  { label: '투자자산', icon: Briefcase },
+  { label: '투자자산관리', icon: Briefcase, active: true },
   { label: '조기경보', icon: AlertTriangle, badge: 4 },
-  { label: '자펀드보고', icon: FileText },
+  { label: '운용사 보고', icon: FileText },
+  { label: '회계', icon: Calculator },
+  { label: '농식품보고', icon: Building2 },
   { label: '수탁보고', icon: Wallet },
-  { label: '부처보고', icon: Building2 },
-  { label: '모태펀드회계', icon: Calculator },
-  { label: '가치평가', icon: TrendingUp },
+  { label: '관리자', icon: Settings },
 ];
 
 const QUICK_MENUS = [
