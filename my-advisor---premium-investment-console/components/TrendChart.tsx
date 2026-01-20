@@ -3,9 +3,9 @@ import React from 'react';
 
 const TrendChart: React.FC = () => {
   const data = [
-    { year: '2023', target: 75, actual: 15, market: 10 },
-    { year: '2022', target: 60, actual: 30, market: 10 },
-    { year: '2021', target: 85, actual: 10, market: 5 },
+    { year: '2026', target: 75, actual: 15, market: 10 },
+    { year: '2025', target: 60, actual: 30, market: 10 },
+    { year: '2024', target: 85, actual: 10, market: 5 },
   ];
 
   return (

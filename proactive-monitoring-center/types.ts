@@ -91,9 +91,9 @@ export interface InvestmentItem {
 
 export interface YearlyInvestment {
   category: string;
-  y2020: number;
-  y2021: number;
-  y2022: number;
+  y2024: number;
+  y2025: number;
+  y2026: number;
 }
 
 export interface GradeData {

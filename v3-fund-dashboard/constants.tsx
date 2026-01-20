@@ -138,22 +138,22 @@ export const EARLY_WARNINGS: EarlyWarning[] = [
 
 // 연도별 투자현황
 export const YEARLY_INVESTMENTS: YearlyInvestment[] = [
-  { category: '결성 예정액', y2020: 9827, y2021: 20828, y2022: 34457 },
-  { category: '출자약정액', y2020: 2895, y2021: 8458, y2022: 4115 },
-  { category: '자펀드 수', y2020: 64, y2021: 68, y2022: 70 },
-  { category: '자펀드 수(청산)', y2020: 60, y2021: 65, y2022: 70 },
-  { category: '결성액', y2020: 9818, y2021: 20820, y2022: 34454 },
-  { category: '자펀드 납입액', y2020: 86572, y2021: 56135, y2022: 41250 },
-  { category: '모태 납입액', y2020: 7962, y2021: 4135, y2022: 1125 },
+  { category: '결성 예정액', y2024: 9827, y2025: 20828, y2026: 34457 },
+  { category: '출자약정액', y2024: 2895, y2025: 8458, y2026: 4115 },
+  { category: '자펀드 수', y2024: 64, y2025: 68, y2026: 70 },
+  { category: '자펀드 수(청산)', y2024: 60, y2025: 65, y2026: 70 },
+  { category: '결성액', y2024: 9818, y2025: 20820, y2026: 34454 },
+  { category: '자펀드 납입액', y2024: 86572, y2025: 56135, y2026: 41250 },
+  { category: '모태 납입액', y2024: 7962, y2025: 4135, y2026: 1125 },
 ];
 
 // 종합등급 변동 데이터
 export const GRADE_DATA: GradeData[] = [
-  { year: 2018, normal: 200, caution: 30, warning: 10 },
-  { year: 2019, normal: 180, caution: 40, warning: 15 },
-  { year: 2020, normal: 190, caution: 35, warning: 12 },
-  { year: 2021, normal: 210, caution: 25, warning: 8 },
-  { year: 2022, normal: 220, caution: 20, warning: 5 },
+  { year: 2022, normal: 200, caution: 30, warning: 10 },
+  { year: 2023, normal: 180, caution: 40, warning: 15 },
+  { year: 2024, normal: 190, caution: 35, warning: 12 },
+  { year: 2025, normal: 210, caution: 25, warning: 8 },
+  { year: 2026, normal: 220, caution: 20, warning: 5 },
 ];
 
 // 투자분야 비율

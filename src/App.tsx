@@ -21,15 +21,6 @@ const dashboards: DashboardInfo[] = [
     color: '#4ade80',
   },
   {
-    id: 'asset',
-    title: '시안3: 카드 그리드',
-    description: '전문 자산 관리 및 포트폴리오 분석',
-    icon: '🏦',
-    path: '/professional-asset-management-dashboard/',
-    port: 5192,
-    color: '#f472b6',
-  },
-  {
     id: 'monitoring',
     title: '시안2: 모니터링 센터',
     description: '시스템 모니터링 및 실시간 알림',
@@ -37,6 +28,15 @@ const dashboards: DashboardInfo[] = [
     path: '/proactive-monitoring-center/',
     port: 5191,
     color: '#60a5fa',
+  },
+  {
+    id: 'asset',
+    title: '시안3: 카드 그리드',
+    description: '전문 자산 관리 및 포트폴리오 분석',
+    icon: '🏦',
+    path: '/professional-asset-management-dashboard/',
+    port: 5192,
+    color: '#f472b6',
   }
 ]
 

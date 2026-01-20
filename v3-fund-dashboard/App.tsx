@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import {
   TOP_OPERATORS,
   TOP_INVESTMENTS,
@@ -10,7 +10,36 @@ import {
   NICE_COMPANY_DATA
 } from './constants';
 
+// 모달 컴포넌트
+interface ModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  title: string;
+  children: React.ReactNode;
+}
+
+const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
+  if (!isOpen) return null;
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center">
+      <div className="absolute inset-0 bg-black/50" onClick={onClose}></div>
+      <div className="relative bg-white rounded-xl shadow-2xl w-[480px] max-h-[80vh] flex flex-col">
+        <div className="flex items-center justify-between px-5 py-4 border-b border-slate-200">
+          <h2 className="text-lg font-bold text-slate-800">{title}</h2>
+          <button onClick={onClose} className="p-1 hover:bg-slate-100 rounded-lg transition-colors">
+            <span className="material-symbols-outlined text-slate-500">close</span>
+          </button>
+        </div>
+        <div className="flex-1 overflow-auto p-5">{children}</div>
+      </div>
+    </div>
+  );
+};
+
 const App: React.FC = () => {
+  const [memoOpen, setMemoOpen] = useState(false);
+  const [calendarOpen, setCalendarOpen] = useState(false);
+
   return (
     <div className="flex h-screen bg-slate-100 overflow-hidden">
       {/* 사이드바 */}
@@ -68,8 +97,22 @@ const App: React.FC = () => {
         {/* 헤더 */}
         <header className="h-11 bg-white border-b border-slate-200 px-4 flex items-center justify-between shrink-0">
           <h1 className="text-sm font-bold text-slate-800">농식품모태펀드 투자자산관리시스템</h1>
-          <div className="flex items-center gap-3">
-            <button className="relative p-1 hover:bg-slate-100 rounded transition-colors">
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setMemoOpen(true)}
+              className="p-1.5 hover:bg-slate-100 rounded-lg transition-colors"
+              title="메모"
+            >
+              <span className="material-symbols-outlined text-slate-500 text-lg">edit_note</span>
+            </button>
+            <button
+              onClick={() => setCalendarOpen(true)}
+              className="p-1.5 hover:bg-slate-100 rounded-lg transition-colors"
+              title="일정"
+            >
+              <span className="material-symbols-outlined text-slate-500 text-lg">calendar_month</span>
+            </button>
+            <button className="relative p-1.5 hover:bg-slate-100 rounded-lg transition-colors">
               <span className="material-symbols-outlined text-slate-600 text-xl">notifications</span>
               <span className="absolute -top-0.5 -right-0.5 w-4 h-4 bg-red-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center">4</span>
             </button>
@@ -156,7 +199,7 @@ const App: React.FC = () => {
                   <h3 className="text-s font-bold text-slate-700">종합등급 변동</h3>
                   <div className="flex items-center gap-1">
                     <button className="p-0.5 hover:bg-slate-100 rounded"><span className="material-symbols-outlined text-slate-400 text-sm">chevron_left</span></button>
-                    <span className="text-xs font-bold text-slate-600">2020년</span>
+                    <span className="text-xs font-bold text-slate-600">2024년</span>
                     <button className="p-0.5 hover:bg-slate-100 rounded"><span className="material-symbols-outlined text-slate-400 text-sm">chevron_right</span></button>
                   </div>
                 </div>
@@ -311,18 +354,18 @@ const App: React.FC = () => {
                     <thead className="bg-slate-50 sticky top-0">
                       <tr>
                         <th className="px-2 py-1.5 text-left font-bold text-slate-600">구분</th>
-                        <th className="px-2 py-1.5 text-right font-bold text-slate-600">2020</th>
-                        <th className="px-2 py-1.5 text-right font-bold text-slate-600">2021</th>
-                        <th className="px-2 py-1.5 text-right font-bold text-slate-600">2022</th>
+                        <th className="px-2 py-1.5 text-right font-bold text-slate-600">2024</th>
+                        <th className="px-2 py-1.5 text-right font-bold text-slate-600">2025</th>
+                        <th className="px-2 py-1.5 text-right font-bold text-slate-600">2026</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-100">
                       {YEARLY_INVESTMENTS.map((row) => (
                         <tr key={row.category} className="hover:bg-slate-50">
                           <td className="px-2 py-1.5 text-slate-600">{row.category}</td>
-                          <td className="px-2 py-1.5 text-right text-slate-800">{row.y2020.toLocaleString()}</td>
-                          <td className="px-2 py-1.5 text-right text-slate-800">{row.y2021.toLocaleString()}</td>
-                          <td className="px-2 py-1.5 text-right text-slate-800">{row.y2022.toLocaleString()}</td>
+                          <td className="px-2 py-1.5 text-right text-slate-800">{row.y2024.toLocaleString()}</td>
+                          <td className="px-2 py-1.5 text-right text-slate-800">{row.y2025.toLocaleString()}</td>
+                          <td className="px-2 py-1.5 text-right text-slate-800">{row.y2026.toLocaleString()}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -347,9 +390,9 @@ const App: React.FC = () => {
                   <thead className="bg-slate-50">
                     <tr>
                       <th className="px-2 py-2 text-left font-bold text-slate-600">구분</th>
-                      <th className="px-2 py-2 text-left font-bold text-slate-600">2020년</th>
-                      <th className="px-2 py-2 text-left font-bold text-slate-600">2021년</th>
-                      <th className="px-2 py-2 text-left font-bold text-slate-600">2022년</th>
+                      <th className="px-2 py-2 text-left font-bold text-slate-600">2024년</th>
+                      <th className="px-2 py-2 text-left font-bold text-slate-600">2025년</th>
+                      <th className="px-2 py-2 text-left font-bold text-slate-600">2026년</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100">
@@ -386,7 +429,7 @@ const App: React.FC = () => {
               <div className="bg-white rounded-lg p-4 border border-slate-200">
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-2">
-                    <h3 className="text-sm font-bold text-slate-700">NICE평가정보('22)</h3>
+                    <h3 className="text-sm font-bold text-slate-700">NICE평가정보('25)</h3>
                     <span className="text-xs text-slate-400">(단위 : 억원)</span>
                   </div>
                   <div className="flex items-center gap-1">
@@ -430,6 +473,67 @@ const App: React.FC = () => {
           </div>
         </main>
       </div>
+
+      {/* 메모 모달 */}
+      <Modal isOpen={memoOpen} onClose={() => setMemoOpen(false)} title="메모">
+        <div className="space-y-4">
+          <textarea
+            className="w-full h-48 p-3 border border-slate-200 rounded-lg text-sm resize-none focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            placeholder="메모를 입력하세요..."
+          />
+          <div className="flex justify-end gap-2">
+            <button
+              onClick={() => setMemoOpen(false)}
+              className="px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-100 rounded-lg"
+            >
+              취소
+            </button>
+            <button className="px-4 py-2 text-sm font-medium text-white bg-emerald-500 hover:bg-emerald-600 rounded-lg">
+              저장
+            </button>
+          </div>
+        </div>
+      </Modal>
+
+      {/* 일정 모달 */}
+      <Modal isOpen={calendarOpen} onClose={() => setCalendarOpen(false)} title="일정">
+        <div className="space-y-4">
+          <div className="grid grid-cols-7 gap-1 text-center text-xs">
+            {['일', '월', '화', '수', '목', '금', '토'].map((day) => (
+              <div key={day} className="py-2 font-bold text-slate-500">{day}</div>
+            ))}
+            {Array.from({ length: 31 }, (_, i) => (
+              <button
+                key={i}
+                className={`py-2 rounded-lg hover:bg-emerald-100 ${
+                  i + 1 === 20 ? 'bg-emerald-500 text-white hover:bg-emerald-600' : 'text-slate-700'
+                }`}
+              >
+                {i + 1}
+              </button>
+            ))}
+          </div>
+          <div className="border-t border-slate-200 pt-4">
+            <h4 className="text-sm font-bold text-slate-700 mb-2">오늘의 일정</h4>
+            <div className="space-y-2">
+              <div className="flex items-center gap-3 p-2 bg-slate-50 rounded-lg">
+                <div className="w-1 h-8 bg-emerald-500 rounded-full"></div>
+                <div>
+                  <p className="text-sm font-medium text-slate-800">분기 보고서 제출</p>
+                  <p className="text-xs text-slate-500">14:00</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 p-2 bg-slate-50 rounded-lg">
+                <div className="w-1 h-8 bg-blue-500 rounded-full"></div>
+                <div>
+                  <p className="text-sm font-medium text-slate-800">운용사 미팅</p>
+                  <p className="text-xs text-slate-500">16:00</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Modal>
     </div>
   );
 };

@@ -6,7 +6,7 @@ import {
   TrendingUp, TrendingDown, AlertTriangle, Briefcase,
   PieChart, Wallet, Building2, Download,
   Clock, Plus, BookOpen, Calculator, FileCheck, FolderOpen,
-  ArrowUpDown
+  ArrowUpDown, Calendar, X
 } from 'lucide-react';
 
 // Types
@@ -46,6 +46,32 @@ interface EarlyWarningProps {
   type: 'new' | 'extend' | 'suspend' | 'release';
   timeAgo: string;
 }
+
+interface ModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  title: string;
+  children: React.ReactNode;
+}
+
+// 모달 컴포넌트
+const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
+  if (!isOpen) return null;
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center">
+      <div className="absolute inset-0 bg-black/50" onClick={onClose}></div>
+      <div className="relative bg-white rounded-xl shadow-2xl w-[480px] max-h-[80vh] flex flex-col">
+        <div className="flex items-center justify-between px-5 py-4 border-b border-slate-200">
+          <h2 className="text-lg font-bold text-slate-800">{title}</h2>
+          <button onClick={onClose} className="p-1 hover:bg-slate-100 rounded-lg transition-colors">
+            <X className="text-slate-500" size={20} />
+          </button>
+        </div>
+        <div className="flex-1 overflow-auto p-5">{children}</div>
+      </div>
+    </div>
+  );
+};
 
 // Data
 const NAV_ITEMS = [
@@ -127,9 +153,9 @@ const FAVORITE_MENUS = [
 ];
 
 const YEARLY_INVESTMENTS = [
-  { category: '결성 예정액', y2020: 9827, y2021: 20828, y2022: 34457 },
-  { category: '출자약정액', y2020: 2895, y2021: 8458, y2022: 4115 },
-  { category: '자펀드 수', y2020: 64, y2021: 68, y2022: 70 },
+  { category: '결성 예정액', y2024: 9827, y2025: 20828, y2026: 34457 },
+  { category: '출자약정액', y2024: 2895, y2025: 8458, y2026: 4115 },
+  { category: '자펀드 수', y2024: 64, y2025: 68, y2026: 70 },
 ];
 
 const NICE_COMPANY_DATA = [
@@ -189,6 +215,8 @@ const KPICard: React.FC<KPICardProps> = ({ icon: Icon, label, value, unit, chang
 
 export default function App() {
   const [collapsed, setCollapsed] = useState(false);
+  const [memoOpen, setMemoOpen] = useState(false);
+  const [calendarOpen, setCalendarOpen] = useState(false);
 
   return (
     <div className="flex h-screen bg-slate-100 text-slate-800 overflow-hidden">
@@ -264,6 +292,20 @@ export default function App() {
                 className="bg-slate-50 border border-slate-200 text-xs rounded-lg pl-7 pr-3 py-1.5 w-40 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent placeholder:text-slate-400"
               />
             </div>
+            <button
+              onClick={() => setMemoOpen(true)}
+              className="p-1.5 hover:bg-slate-100 rounded-lg transition-colors"
+              title="메모"
+            >
+              <FileText size={18} className="text-slate-500" />
+            </button>
+            <button
+              onClick={() => setCalendarOpen(true)}
+              className="p-1.5 hover:bg-slate-100 rounded-lg transition-colors"
+              title="일정"
+            >
+              <Calendar size={18} className="text-slate-500" />
+            </button>
             <button className="relative p-1.5 hover:bg-slate-100 rounded-lg transition-colors">
               <Bell size={18} className="text-slate-500" />
               <span className="absolute top-0.5 right-0.5 w-3.5 h-3.5 bg-red-500 text-[9px] flex items-center justify-center font-bold text-white rounded-full">4</span>
@@ -447,18 +489,18 @@ export default function App() {
                         <thead className="bg-slate-50 sticky top-0">
                           <tr>
                             <th className="px-3 py-1.5 text-left font-bold text-slate-600">구분</th>
-                            <th className="px-3 py-1.5 text-right font-bold text-slate-600">2020년</th>
-                            <th className="px-3 py-1.5 text-right font-bold text-slate-600">2021년</th>
-                            <th className="px-3 py-1.5 text-right font-bold text-slate-600">2022년</th>
+                            <th className="px-3 py-1.5 text-right font-bold text-slate-600">2024년</th>
+                            <th className="px-3 py-1.5 text-right font-bold text-slate-600">2025년</th>
+                            <th className="px-3 py-1.5 text-right font-bold text-slate-600">2026년</th>
                           </tr>
                         </thead>
                         <tbody className="divide-y divide-slate-100">
                           {YEARLY_INVESTMENTS.map((row, index) => (
                             <tr key={index} className="hover:bg-amber-50/50">
                               <td className="px-3 py-1.5 text-slate-700 font-medium">{row.category}</td>
-                              <td className="px-3 py-1.5 text-right text-slate-600">{row.y2020.toLocaleString()}</td>
-                              <td className="px-3 py-1.5 text-right text-slate-600">{row.y2021.toLocaleString()}</td>
-                              <td className="px-3 py-1.5 text-right font-bold text-slate-800">{row.y2022.toLocaleString()}</td>
+                              <td className="px-3 py-1.5 text-right text-slate-600">{row.y2024.toLocaleString()}</td>
+                              <td className="px-3 py-1.5 text-right text-slate-600">{row.y2025.toLocaleString()}</td>
+                              <td className="px-3 py-1.5 text-right font-bold text-slate-800">{row.y2026.toLocaleString()}</td>
                             </tr>
                           ))}
                         </tbody>
@@ -470,7 +512,7 @@ export default function App() {
                   <div className="bg-white border border-slate-200 rounded-xl overflow-hidden flex flex-col">
                     <div className="px-4 py-2 border-b border-slate-100 bg-slate-50 flex items-center justify-between shrink-0">
                       <h3 className="text-sm font-bold text-slate-800 flex items-center gap-1">
-                        NICE평가정보('22) 
+                        NICE평가정보('25) 
                       </h3>
                       <div className="flex items-center gap-1">
                         <button className="w-6 h-6 flex items-center justify-center text-slate-500 hover:text-blue-600 hover:bg-blue-50 rounded transition-colors" title="정렬">
@@ -576,6 +618,67 @@ export default function App() {
           </div>
         </footer>
       </div>
+
+      {/* 메모 모달 */}
+      <Modal isOpen={memoOpen} onClose={() => setMemoOpen(false)} title="메모">
+        <div className="space-y-4">
+          <textarea
+            className="w-full h-48 p-3 border border-slate-200 rounded-lg text-sm resize-none focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            placeholder="메모를 입력하세요..."
+          />
+          <div className="flex justify-end gap-2">
+            <button
+              onClick={() => setMemoOpen(false)}
+              className="px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-100 rounded-lg"
+            >
+              취소
+            </button>
+            <button className="px-4 py-2 text-sm font-medium text-white bg-emerald-500 hover:bg-emerald-600 rounded-lg">
+              저장
+            </button>
+          </div>
+        </div>
+      </Modal>
+
+      {/* 일정 모달 */}
+      <Modal isOpen={calendarOpen} onClose={() => setCalendarOpen(false)} title="일정">
+        <div className="space-y-4">
+          <div className="grid grid-cols-7 gap-1 text-center text-xs">
+            {['일', '월', '화', '수', '목', '금', '토'].map((day) => (
+              <div key={day} className="py-2 font-bold text-slate-500">{day}</div>
+            ))}
+            {Array.from({ length: 31 }, (_, i) => (
+              <button
+                key={i}
+                className={`py-2 rounded-lg hover:bg-emerald-100 ${
+                  i + 1 === 20 ? 'bg-emerald-500 text-white hover:bg-emerald-600' : 'text-slate-700'
+                }`}
+              >
+                {i + 1}
+              </button>
+            ))}
+          </div>
+          <div className="border-t border-slate-200 pt-4">
+            <h4 className="text-sm font-bold text-slate-700 mb-2">오늘의 일정</h4>
+            <div className="space-y-2">
+              <div className="flex items-center gap-3 p-2 bg-slate-50 rounded-lg">
+                <div className="w-1 h-8 bg-emerald-500 rounded-full"></div>
+                <div>
+                  <p className="text-sm font-medium text-slate-800">분기 보고서 제출</p>
+                  <p className="text-xs text-slate-500">14:00</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 p-2 bg-slate-50 rounded-lg">
+                <div className="w-1 h-8 bg-blue-500 rounded-full"></div>
+                <div>
+                  <p className="text-sm font-medium text-slate-800">운용사 미팅</p>
+                  <p className="text-xs text-slate-500">16:00</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Modal>
     </div>
   );
 }

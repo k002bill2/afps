@@ -250,18 +250,18 @@ const MainDashboard: React.FC = () => {
                 <thead className="bg-slate-50 sticky top-0">
                   <tr>
                     <th className="px-3 py-1.5 text-left font-bold text-slate-600">구분</th>
-                    <th className="px-3 py-1.5 text-right font-bold text-slate-600">2020년</th>
-                    <th className="px-3 py-1.5 text-right font-bold text-slate-600">2021년</th>
-                    <th className="px-3 py-1.5 text-right font-bold text-slate-600">2022년</th>
+                    <th className="px-3 py-1.5 text-right font-bold text-slate-600">2024년</th>
+                    <th className="px-3 py-1.5 text-right font-bold text-slate-600">2025년</th>
+                    <th className="px-3 py-1.5 text-right font-bold text-slate-600">2026년</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100">
                   {YEARLY_INVESTMENTS.slice(0, 5).map((row, index) => (
                     <tr key={index} className="hover:bg-amber-50/50">
                       <td className="px-3 py-1.5 text-slate-700">{row.category}</td>
-                      <td className="px-3 py-1.5 text-right text-slate-600">{row.y2020.toLocaleString()}</td>
-                      <td className="px-3 py-1.5 text-right text-slate-600">{row.y2021.toLocaleString()}</td>
-                      <td className="px-3 py-1.5 text-right font-bold text-slate-800">{row.y2022.toLocaleString()}</td>
+                      <td className="px-3 py-1.5 text-right text-slate-600">{row.y2024.toLocaleString()}</td>
+                      <td className="px-3 py-1.5 text-right text-slate-600">{row.y2025.toLocaleString()}</td>
+                      <td className="px-3 py-1.5 text-right font-bold text-slate-800">{row.y2026.toLocaleString()}</td>
                     </tr>
                   ))}
                 </tbody>
