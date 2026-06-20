@@ -1,0 +1,10 @@
+{
+  "name": "apfs-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "description": "농림수산식품모태펀드 투자자산관리시스템 — 대시보드 (claude.ai/design 번들 드롭인)",
+  "scripts": {
+    "dev": "npx --yes serve -l 5194 .",
+    "start": "npx --yes serve -l 5194 ."
+  }
+}
