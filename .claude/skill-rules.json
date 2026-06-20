@@ -1,109 +1,64 @@
 {
-  "react-native-patterns": {
-    "type": "guideline",
-    "enforcement": "require",
-    "priority": "critical",
-    "description": "React Native/Expo 핵심 패턴 가이드",
-    "promptTriggers": {
-      "keywords": ["useEffect", "component", "screen", "hook", "navigation", "컴포넌트", "화면"],
-      "intentPatterns": [
-        "(create|add|make).*?(component|screen|hook)",
-        "(fix|debug).*?(useEffect|hook)",
-        "(생성|만들|추가).*?(컴포넌트|화면|훅)"
-      ]
-    },
-    "fileTriggers": {
-      "pathPatterns": ["**/components/**/*.tsx", "**/screens/**/*.tsx", "**/hooks/**/*.ts"],
-      "contentPatterns": ["useEffect", "useState", "React.FC"]
-    }
-  },
-
-  "useeffect-cleanup": {
-    "type": "guardrail",
-    "enforcement": "require",
-    "priority": "critical",
-    "description": "useEffect cleanup 함수 필수 확인",
-    "promptTriggers": {
-      "keywords": ["useEffect", "subscription", "interval", "listener", "구독", "타이머"],
-      "intentPatterns": [
-        "useEffect.*?(subscribe|interval|timer|listener)",
-        "(add|remove).*?(subscription|listener)"
-      ]
-    },
-    "reminder": "useEffect에서 구독/타이머는 반드시 cleanup 함수에서 정리하세요"
-  },
-
-  "firebase-integration": {
-    "type": "domain",
-    "enforcement": "require",
-    "priority": "high",
-    "description": "Firebase 통합 패턴 (Auth, Firestore)",
-    "promptTriggers": {
-      "keywords": ["firebase", "firestore", "auth", "인증", "데이터베이스"],
-      "intentPatterns": [
-        "(firebase|firestore).*?(setup|config|integration)",
-        "(auth|인증).*?(login|signup|logout)"
-      ]
-    },
-    "fileTriggers": {
-      "pathPatterns": ["**/services/firebase/**", "**/services/auth/**"],
-      "contentPatterns": ["firebase", "firestore", "auth"]
-    }
-  },
-
-  "seoul-api-integration": {
-    "type": "domain",
-    "enforcement": "require",
-    "priority": "critical",
-    "description": "Seoul Open Data API 통합 패턴",
-    "promptTriggers": {
-      "keywords": ["seoul api", "서울 api", "실시간 도착", "arrival", "subway", "지하철"],
-      "intentPatterns": [
-        "(seoul|서울).*?(api|데이터)",
-        "(실시간|realtime).*?(arrival|도착)",
-        "(fetch|get).*?(train|subway)"
-      ]
-    },
-    "fileTriggers": {
-      "pathPatterns": ["**/services/api/**", "**/seoulSubwayApi.ts"],
-      "contentPatterns": ["seoulSubwayApi", "ARRIVAL_INFO", "STATION"]
-    },
-    "reminder": "API 폴링 간격은 최소 30초를 유지하세요"
-  },
-
-  "expo-notifications": {
-    "type": "domain",
+  "dashboard-dev-orchestrator": {
+    "type": "skill",
     "enforcement": "suggest",
     "priority": "high",
-    "description": "Expo Push Notifications 패턴",
+    "description": "농식품모태펀드 대시보드 종합 개발 팀 조율 (설계→구현→리뷰→검증)",
     "promptTriggers": {
-      "keywords": ["notification", "push", "알림", "푸시"],
+      "keywords": ["대시보드", "시안", "dashboard", "화면 추가", "기능 추가", "차트", "컴포넌트", "구현", "개발"],
       "intentPatterns": [
-        "(notification|알림).*?(send|schedule|push)",
-        "expo.*?notification"
+        "(시안|dashboard|대시보드).*(추가|구현|개발|만들|수정)",
+        "(차트|컴포넌트|화면|카드).*(추가|만들|구현)",
+        "(다시|재실행|업데이트|보완|이전 결과)"
       ]
-    },
-    "fileTriggers": {
-      "pathPatterns": ["**/services/notification/**"],
-      "contentPatterns": ["Notifications", "scheduleNotification", "ExpoPushToken"]
     }
   },
 
-  "navigation-patterns": {
-    "type": "guideline",
+  "dashboard-feature-design": {
+    "type": "skill",
+    "enforcement": "suggest",
+    "priority": "normal",
+    "description": "기능 요구사항 → 구현 명세(대상 시안·types·constants·컴포넌트 분해)",
+    "promptTriggers": {
+      "keywords": ["설계", "기획", "명세", "데이터 모델", "구조", "design"],
+      "intentPatterns": ["(기능|화면|대시보드).*(설계|기획|구조)"]
+    }
+  },
+
+  "dashboard-component-build": {
+    "type": "skill",
     "enforcement": "suggest",
     "priority": "high",
-    "description": "React Navigation 6.x 패턴",
+    "description": "React 19 컴포넌트·차트·상수·타입 시안별 규약 구현",
     "promptTriggers": {
-      "keywords": ["navigation", "navigate", "screen", "stack", "tab", "네비게이션"],
-      "intentPatterns": [
-        "(navigation|navigate).*?(screen|page)",
-        "(add|create).*?(screen|route)"
-      ]
+      "keywords": ["컴포넌트", "component", "차트", "chart", "구현", "만들"],
+      "intentPatterns": ["(create|add|make|만들|추가|구현).*(component|컴포넌트|화면|차트|카드)"]
     },
     "fileTriggers": {
-      "pathPatterns": ["**/navigation/**"],
-      "contentPatterns": ["createStackNavigator", "createBottomTabNavigator", "useNavigation"]
+      "pathPatterns": ["**/components/**/*.tsx", "**/constants.tsx", "**/types.ts", "**/App.tsx"],
+      "contentPatterns": ["React.FC", "export default", "constants", "interface"]
+    }
+  },
+
+  "dashboard-review": {
+    "type": "skill",
+    "enforcement": "suggest",
+    "priority": "normal",
+    "description": "정적 코드 품질·디자인 일관성 리뷰",
+    "promptTriggers": {
+      "keywords": ["리뷰", "review", "점검", "일관성", "품질"],
+      "intentPatterns": ["(리뷰|review|점검).*(코드|컴포넌트|일관성)"]
+    }
+  },
+
+  "dashboard-qa-verify": {
+    "type": "skill",
+    "enforcement": "suggest",
+    "priority": "high",
+    "description": "tsc 타입체크 + vite 빌드 실행 및 시안 간 경계면 검증 (lint/test 없음)",
+    "promptTriggers": {
+      "keywords": ["빌드", "build", "검증", "qa", "타입체크", "통합"],
+      "intentPatterns": ["(빌드|build|검증|qa|타입체크).*(확인|점검|실행)"]
     }
   },
 
@@ -111,111 +66,13 @@
     "type": "guardrail",
     "enforcement": "block",
     "priority": "critical",
-    "description": "TypeScript strict mode 준수",
+    "description": "TypeScript strict mode 준수 (any 금지)",
     "promptTriggers": {
       "keywords": ["any", "타입", "type", "interface"],
-      "intentPatterns": [
-        ".*?:\\s*any\\b",
-        "(add|define).*?(type|interface)"
-      ]
+      "intentPatterns": [".*?:\\s*any\\b", "(add|define).*?(type|interface)"]
     },
-    "blockedPatterns": [
-      ": any",
-      "as any"
-    ],
-    "reminder": "any 타입 대신 구체적인 타입이나 unknown을 사용하세요"
-  },
-
-  "error-handling": {
-    "type": "guideline",
-    "enforcement": "require",
-    "priority": "high",
-    "description": "에러 처리 및 Sentry 통합",
-    "promptTriggers": {
-      "keywords": ["error", "catch", "try", "에러", "오류", "예외"],
-      "intentPatterns": [
-        "(handle|catch).*?(error|exception)",
-        "try.*?catch"
-      ]
-    },
-    "fileTriggers": {
-      "pathPatterns": ["**/services/**", "**/hooks/**"],
-      "contentPatterns": ["try", "catch", "throw", "Error"]
-    },
-    "reminder": "에러는 빈 배열/null 반환으로 처리하고, Sentry로 전송하세요"
-  },
-
-  "async-storage": {
-    "type": "domain",
-    "enforcement": "suggest",
-    "priority": "normal",
-    "description": "AsyncStorage 캐싱 패턴",
-    "promptTriggers": {
-      "keywords": ["storage", "cache", "persist", "캐시", "저장"],
-      "intentPatterns": [
-        "(async)?storage.*?(save|get|set)",
-        "(cache|persist).*?(data|state)"
-      ]
-    },
-    "fileTriggers": {
-      "pathPatterns": ["**/utils/storageUtils.ts", "**/services/data/**"],
-      "contentPatterns": ["AsyncStorage", "setItem", "getItem"]
-    }
-  },
-
-  "test-coverage": {
-    "type": "validation",
-    "enforcement": "require",
-    "priority": "high",
-    "description": "Jest 테스트 커버리지 (75% statements)",
-    "promptTriggers": {
-      "keywords": ["test", "jest", "coverage", "테스트", "커버리지"],
-      "intentPatterns": [
-        "(write|add).*?test",
-        "(run|check).*?coverage"
-      ]
-    },
-    "fileTriggers": {
-      "pathPatterns": ["**/__tests__/**", "**/*.test.ts", "**/*.test.tsx"],
-      "contentPatterns": ["describe", "it", "expect", "jest"]
-    },
-    "thresholds": {
-      "statements": 75,
-      "functions": 70,
-      "branches": 60
-    }
-  },
-
-  "performance-optimization": {
-    "type": "guideline",
-    "enforcement": "suggest",
-    "priority": "normal",
-    "description": "React Native 성능 최적화",
-    "promptTriggers": {
-      "keywords": ["performance", "optimize", "memo", "callback", "성능", "최적화"],
-      "intentPatterns": [
-        "(optimize|improve).*?(performance|speed)",
-        "(use)?memo.*?(component|function)"
-      ]
-    },
-    "fileTriggers": {
-      "pathPatterns": ["**/components/**"],
-      "contentPatterns": ["React.memo", "useMemo", "useCallback"]
-    }
-  },
-
-  "checklist-generator": {
-    "type": "tool",
-    "enforcement": "suggest",
-    "priority": "normal",
-    "description": "자동 체크리스트 생성",
-    "promptTriggers": {
-      "keywords": ["checklist", "체크리스트", "TODO", "확인사항"],
-      "intentPatterns": [
-        "(create|generate).*?(checklist|todo)",
-        "(verify|check).*?list"
-      ]
-    }
+    "blockedPatterns": [": any", "as any"],
+    "reminder": "any 타입 대신 구체적 타입이나 unknown을 사용하세요"
   },
 
   "code-simplifier": {
@@ -227,24 +84,7 @@
     "model": "haiku",
     "promptTriggers": {
       "keywords": ["simplify", "refactor", "단순화", "리팩토링", "개선"],
-      "intentPatterns": [
-        "(simplify|refactor).*?(code|function)",
-        "(reduce|줄이).*?(complexity|복잡도)"
-      ]
-    }
-  },
-
-  "parallel-coordinator": {
-    "type": "framework",
-    "enforcement": "suggest",
-    "priority": "high",
-    "description": "병렬 에이전트 조정",
-    "promptTriggers": {
-      "keywords": ["parallel", "병렬", "동시", "concurrent", "에이전트"],
-      "intentPatterns": [
-        "(parallel|병렬).*?(task|작업)",
-        "(coordinate|조정).*?(agent|에이전트)"
-      ]
+      "intentPatterns": ["(simplify|refactor).*?(code|function)", "(reduce|줄이).*?(complexity|복잡도)"]
     }
   }
 }
